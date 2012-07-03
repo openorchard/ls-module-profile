@@ -89,6 +89,7 @@ class Profile_Actions extends Cms_ActionScope {
 			$this->customer->billing_street_addr = $billing_info->street_address;
 			$this->customer->billing_city = $billing_info->city;
 			$this->customer->billing_zip = $billing_info->zip;
+			$this->customer->phone = $billing_info->phone;
 			$this->customer->password = null;
 			$this->customer->save();
 	
