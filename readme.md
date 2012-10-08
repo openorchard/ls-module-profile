@@ -57,7 +57,7 @@ Go to the `Head & Blocks` tab. Create a block with name `change_account` and cod
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateAccount', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateAccount', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateAccount();
@@ -85,7 +85,7 @@ Go to the `Head & Blocks` tab. Create a block with name `change_account` and cod
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updatePassword', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updatePassword', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updatePassword();
@@ -170,7 +170,7 @@ $billing_states = Shop_CountryState::create(true)->where('country_id=?', $billin
   </ul>
 
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateBilling', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateBilling', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateBilling();
@@ -234,9 +234,9 @@ $shipping_country = $shipping_info->country ? $shipping_info->country : $shippin
 $shipping_states = Shop_CountryState::create(true)->where('country_id=?', $shipping_country)->order('name')->find_all();
 ?>
 
-  <h3 class="block left">Shipping Information <a href="javascript:;" onclick="return $('#billing_info').sendRequest('shopprofile:on_updateBilling', {
+  <h3 class="block left">Shipping Information <a href="javascript:;" onclick="return $('#billing_info').sendRequest('profile:on_updateBilling', {
     onSuccess: function() {
-      LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'shopprofile:on_copyBillingToShipping', {
+      LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'profile:on_copyBillingToShipping', {
         update: {'#shipping_info': 'ls_cms_page'},
         extraFields: {
           'section': 'change_shipping',
@@ -309,7 +309,7 @@ $shipping_states = Shop_CountryState::create(true)->where('country_id=?', $shipp
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateShipping', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateShipping', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateShipping();
