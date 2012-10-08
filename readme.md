@@ -186,7 +186,7 @@ $billing_states = Shop_CountryState::create(true)->where('country_id=?', $billin
 </article>
 
 <script>
-  LS.sendRequest('<?= Phpr::$request->getCurrentUri() ?>', 'on_action', {
+  LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'on_action', {
     update: {'#shipping_info': 'ls_cms_page'},
     extraFields: {
       'section': 'change_shipping',
@@ -236,7 +236,7 @@ $shipping_states = Shop_CountryState::create(true)->where('country_id=?', $shipp
 
   <h3 class="block left">Shipping Information <a href="javascript:;" onclick="return $('#billing_info').sendRequest('shopprofile:on_updateBilling', {
     onSuccess: function() {
-      LS.sendRequest('<?= Phpr::$request->getCurrentUri() ?>', 'shopprofile:on_copyBillingToShipping', {
+      LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'shopprofile:on_copyBillingToShipping', {
         update: {'#shipping_info': 'ls_cms_page'},
         extraFields: {
           'section': 'change_shipping',
@@ -384,21 +384,21 @@ To navigate it all you could use a sidebar partial with this code (note: it uses
 <h2>My Account</h2>
 <ul class="categories">
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'},
       extraFields: {'section': 'change_information'}
     })">Change Information</a>
   </li>
   
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'},
       extraFields: {'section': 'change_account'}
     })">Change Account</a>
   </li>
 
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account/orders', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account/orders') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'}
     })">View Orders</a>
   </li>
