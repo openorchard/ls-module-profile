@@ -57,7 +57,7 @@ Go to the `Head & Blocks` tab. Create a block with name `change_account` and cod
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateAccount', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateAccount', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateAccount();
@@ -85,7 +85,7 @@ Go to the `Head & Blocks` tab. Create a block with name `change_account` and cod
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updatePassword', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updatePassword', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updatePassword();
@@ -170,7 +170,7 @@ $billing_states = Shop_CountryState::create(true)->where('country_id=?', $billin
   </ul>
 
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateBilling', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateBilling', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateBilling();
@@ -186,7 +186,7 @@ $billing_states = Shop_CountryState::create(true)->where('country_id=?', $billin
 </article>
 
 <script>
-  LS.sendRequest('<?= Phpr::$request->getCurrentUri() ?>', 'on_action', {
+  LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'on_action', {
     update: {'#shipping_info': 'ls_cms_page'},
     extraFields: {
       'section': 'change_shipping',
@@ -234,9 +234,9 @@ $shipping_country = $shipping_info->country ? $shipping_info->country : $shippin
 $shipping_states = Shop_CountryState::create(true)->where('country_id=?', $shipping_country)->order('name')->find_all();
 ?>
 
-  <h3 class="block left">Shipping Information <a href="javascript:;" onclick="return $('#billing_info').sendRequest('shopprofile:on_updateBilling', {
+  <h3 class="block left">Shipping Information <a href="javascript:;" onclick="return $('#billing_info').sendRequest('profile:on_updateBilling', {
     onSuccess: function() {
-      LS.sendRequest('<?= Phpr::$request->getCurrentUri() ?>', 'shopprofile:on_copyBillingToShipping', {
+      LS.sendRequest('<?= root_url(Phpr::$request->getCurrentUri()) ?>', 'profile:on_copyBillingToShipping', {
         update: {'#shipping_info': 'ls_cms_page'},
         extraFields: {
           'section': 'change_shipping',
@@ -309,7 +309,7 @@ $shipping_states = Shop_CountryState::create(true)->where('country_id=?', $shipp
   </ul>
   
   <div class="submit-box right clear-both">
-    <input type="submit" onclick="return $(this).getForm().sendRequest('shopprofile:on_updateShipping', {
+    <input type="submit" onclick="return $(this).getForm().sendRequest('profile:on_updateShipping', {
       extraFields: {'no_flash': true},
       onSuccess: function() {
         site.message.updateShipping();
@@ -384,21 +384,21 @@ To navigate it all you could use a sidebar partial with this code (note: it uses
 <h2>My Account</h2>
 <ul class="categories">
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'},
       extraFields: {'section': 'change_information'}
     })">Change Information</a>
   </li>
   
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'},
       extraFields: {'section': 'change_account'}
     })">Change Account</a>
   </li>
 
   <li>
-    <a href="javascript:;" onclick="return LS.sendRequest('/account/orders', 'on_action', {
+    <a href="javascript:;" onclick="return LS.sendRequest('<? echo root_url('/account/orders') ?>', 'on_action', {
       update: {'.page .wrap': 'ls_cms_page'}
     })">View Orders</a>
   </li>
