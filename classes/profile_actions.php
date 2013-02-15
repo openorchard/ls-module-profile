@@ -83,6 +83,8 @@ class Profile_Actions extends Cms_ActionScope {
 			
 			$billing_info = Shop_CheckoutData::get_billing_info();
 			
+			$this->customer->set_api_fields(Shop_CheckoutData::get_custom_fields());
+			
 			$this->customer->company = $billing_info->company;
 			$this->customer->billing_country_id = $billing_info->country;
 			$this->customer->billing_state_id = $billing_info->state;
@@ -117,6 +119,9 @@ class Profile_Actions extends Cms_ActionScope {
 			
 			Shop_CheckoutData::set_shipping_info();
 			Shop_CheckoutData::get_shipping_info()->save_to_customer($this->customer);
+			
+			$this->customer->set_api_fields(Shop_CheckoutData::get_custom_fields());
+			
 			$this->customer->password = null;
 			$this->customer->save();
 			
